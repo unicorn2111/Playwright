@@ -1,7 +1,8 @@
 import {test, Browser, Page, Locator, expect} from '@playwright/test';
 import { webkit, chromium, firefox } from 'playwright';
  
-
+//only for chrome:
+//chromium.launch({ headless: false }, channel: 'chrome' })
 test('login test', async () => {
     const browser:Browser = await firefox.launch({ headless: false });
     const page:Page = await browser.newPage();
