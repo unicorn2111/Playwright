@@ -18,12 +18,45 @@ test('locators test', async() =>{
     // await email.fill("
 
 //using page.locator(classname)
+const logo: Locator =  page.locator(".img-responsive");
+const logoExist = await logo.isEnabled();
+console.log(logoExist);
+// const logo: Locator = page.locator(".img-responsive");
+// console.log(await expect(logo).toBeVisible());
 
-const logo: Locator = page.locator(".img-responsive");
-console.log(await expect(logo).toBeVisible());
-
-    // const email:Locator = page.locator('.form-control');
+    // const email:Locator = page.locator('#input-email');
     // await email.fill("deepakshi@yopmail.com");
-    // await new Promise(()=>{});
+    // const telephone:Locator = page.locator('input[type="tel"]');
+    // await telephone.fill("1234567890");
+
+    // const password: Locator =  page.locator("#input-password");
+    // await password.fill("playwright@123");
+    // const confirmPassword: Locator = page.locator('input[name="confirm"]');
+    // await confirmPassword.fill("playwright@123");
+
+    const header: Locator =  page.locator('text =Register Account');
+    const headerExist =  await header.isEnabled();
+    console.log(headerExist);
+
+    const frgtPwd: Locator =  page.locator('text=Forgotten Password');
+    const FrgtPwdLinkExist =  await frgtPwd.isEnabled();
+    console.log(FrgtPwdLinkExist);
+
+    const email_Input: Locator =  page.locator('input#input-email');
+    email_Input.fill("dee.arora@yopmail.com");
+    const emailExist = await email_Input.isEnabled();
+    console.log(emailExist);
+
+    const input_tel: Locator =  page.locator('input#input-telephone');
+    input_tel.fill("1234567890");
+    const tel_exist = await input_tel.isEnabled();
+    console.log(tel_exist);
+
+    const radioBtn: Locator =  page.locator('input[type="checkbox"]');
+    await radioBtn.check();
+    const radioBtnExist = await radioBtn.isChecked();
+    console.log(radioBtnExist);
+
+    await new Promise(()=>{});
 });
 
