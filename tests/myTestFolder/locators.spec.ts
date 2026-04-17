@@ -57,6 +57,6 @@ console.log(logoExist);
     const radioBtnExist = await radioBtn.isChecked();
     console.log(radioBtnExist);
 
-    await new Promise(()=>{});
+    // await new Promise(()=>{});
 });
 

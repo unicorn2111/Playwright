@@ -39,6 +39,6 @@ test('browser test', async () => {
 
 
     //prevent script from closing browser immediately
-    await new Promise(()=>{});
+    // await new Promise(()=>{});
 
 })
