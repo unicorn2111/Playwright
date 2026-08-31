@@ -8,30 +8,28 @@ test('Select based dopdown test', async () => {
     //browser context way
     const browserContext: BrowserContext = await browser.newContext();
     const page : Page =  await browserContext.newPage();
+    await page.goto("https://www.bigbasket.com/", { waitUntil: 'domcontentloaded' });
+    const category = page.locator("xpath=//button[@id='headlessui-menu-button-:Rld956:']//span[@class='Label-sc-15v1nk5-0 sc-dhKdcB jnBJRV ffLIFe'][normalize-space()='Shop by']");
 
-    await page.goto("https://www.magupdate.co.uk/magazine-subscription/phrr");
-     const countryDropdown: Locator =  page.locator("#Contact_CountryCode");
-     await countryDropdown.selectOption("India");
-     await countryDropdown.selectOption({label: "India"});
-     await countryDropdown.selectOption({index: 101});
-    //  await countryDropdown.selectOption({value: "India"});
-     await countryDropdown.selectOption({label: "India"});
+    await category.click();
+
+    await page.locator("a[href*='/cl/beverages/?nc=nb']").filter({visible:true}).hover();
+  const teaLink =  page.locator('a[href="/pc/beverages/tea/?nc=nb"]');
+
+    await teaLink.hover(); 
+    await page.locator('text=Green Tea').click();
+
+
+
+
     
-
-    const allOptions = await page.$$('#Contact_CountryCode > option');
-    console.log("Total options in dropdown are : " + allOptions.length);
-
-    for (const option of allOptions) {
-        const optionText = await option.textContent();
-        // console.log(optionText);
-        if(optionText==='Yemen'){
-            await option.click();
-            break;
-        }
-    }
 
     await page.waitForTimeout(2000);
     //prevent script from closing browser immediately
     // await new Promise(()=>{});
 
 }) 
+
+function waitForTimeout(arg0: number) {
+    throw new Error('Function not implemented.');
+}
